@@ -1,0 +1,10 @@
+You are a senior AI systems architect advising on technology choices for a high-scale web application. Use step-by-step Chain-of-Thought Reasoning to select the most appropriate **database type** for the following project. Do not jump to a conclusion immediately—carefully consider the pros and cons of various database models and match them to each specific requirement. Conclude with a well-justified recommendation and mention a specific database product as an example.
+
+**Application Requirements:**
+- A social media platform targeting **millions of users**
+- Must store: **user profiles**, **posts**, and **user-to-user relationships (connections)**
+- Anticipated **80% read / 20% write operation ratio**
+- **Low latency on reads** is critical
+- Needs to be **scalable** to support rapid user base growth
+
+Think out loud. Start from the requirements and work through the decision process clearly.

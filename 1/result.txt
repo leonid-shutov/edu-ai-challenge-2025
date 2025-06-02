@@ -1,0 +1,67 @@
+Let’s walk through the requirements step-by-step using Chain-of-Thought reasoning.
+
+---
+
+**1. Nature of the Application**
+We're dealing with a social media platform—this typically implies:
+- High user count (millions)
+- Real-time data interactions (feeds, profiles, user connections)
+- Evolving schema (users might add new fields to their profiles, posts may contain different types of media)
+
+So we need a flexible schema and strong read performance at scale.
+
+---
+
+**2. Data Types**
+- **User profiles**: structured or semi-structured; suited for document or relational databases
+- **Posts**: usually unstructured/semi-structured; fit well in document stores
+- **Connections between users**: inherently relational (e.g., friends, followers); graph databases excel at this
+
+Right away, it seems like no single database type will perfectly handle all three data types — profiles, content, and relationships — without some compromise.
+
+---
+
+**3. Read-to-Write Ratio: 80% Reads / 20% Writes**
+This implies:
+- Optimizing for read performance is key
+- We can afford some write complexity if it improves read scalability
+- Indexing and caching strategies will be important regardless of database type
+
+---
+
+**4. Scalability Requirement**
+We need a solution that can scale horizontally — likely distributed by design.
+- Relational databases (like PostgreSQL) need sharding for horizontal scale, which adds complexity
+- Document stores (like MongoDB) and wide-column databases (like Cassandra) scale more naturally
+- Graph databases often struggle with horizontal scaling, though some modern implementations (e.g., Neo4j Fabric, Amazon Neptune) have addressed this partially
+
+---
+
+**5. Traversing Relationships**
+This is where things get interesting:
+- Querying user connections (e.g., “friends of friends” or “mutuals”) is not efficient in relational or document stores
+- Graph databases are specifically designed for this — they can traverse edges in milliseconds
+
+If connections are a core part of the platform (which they likely are), this needs to be prioritized in the decision.
+
+---
+
+**Final Analysis:**
+- Document stores like **MongoDB** are excellent for handling posts and profiles due to flexible schema and horizontal scaling
+- For user relationships, a **graph database** like **Neo4j** offers the best query performance and expressive power
+
+A **hybrid architecture** (polyglot persistence) is the most appropriate, where:
+- **MongoDB** handles users and posts
+- **Neo4j** manages the user graph
+
+But if we must pick **one database type only**, the primary bottleneck for social platforms often lies in relationship queries (e.g., newsfeed relevance, mutual connections, influence graphs). So the best-fit compromise is:
+
+---
+
+**✅ Recommendation:**
+- **Database Type**: Graph Database  
+- **Example Product**: **Neo4j**
+
+It provides the best alignment with the connection-heavy nature of the platform, and modern versions offer decent scalability and acceptable support for other data types.
+
+If budget and infrastructure allow, pairing it with MongoDB creates a robust and flexible backend ecosystem.
