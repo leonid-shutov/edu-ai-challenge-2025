@@ -1,0 +1,34 @@
+I'm analyzing a piece of text and need your help producing structured output for a documentation task.
+
+Instructions:
+
+1. Read the input text carefully.
+2. Create a well-written summary (3–5 sentences) that captures the essence of the text, avoiding direct quotes.
+3. Identify the overall sentiment expressed by the author—label it as Positive, Neutral, or Negative.
+4. Assign a sentiment score:
+   - +1 for positive sentiment
+   - 0 for neutral
+   - -1 for negative sentiment
+5. Include a metadata section with:
+   - Total word count of the input text
+   - Word count of the summary
+
+Present everything in the following JSON format:
+
+{
+  "summary": "...",
+  "sentiment": "...",
+  "sentiment_score": ...,
+  "metadata": {
+    "word_count": ...,
+    "summary_length": ...
+  }
+}
+
+Here is the text to analyze:
+
+Remote work, also known as telecommuting, has become increasingly popular in recent years, particularly after the global pandemic forced many companies to adapt to flexible working arrangements. The advantages of remote work are numerous. Employees often report higher job satisfaction due to the elimination of long commutes, increased flexibility in managing work-life balance, and the ability to work from the comfort of their homes. For companies, remote work can lead to lower operational costs, since there is less need for office space and associated expenses.
+
+However, remote work is not without its challenges. Many employees struggle with feelings of isolation and a lack of connection to their colleagues, which can negatively impact collaboration and team dynamics. Moreover, some workers find it difficult to maintain productivity due to distractions at home or the blurred boundaries between personal and professional life. Employers, on the other hand, may face difficulties in monitoring employee performance and ensuring consistent communication across teams.
+
+Despite these challenges, remote work is likely here to stay. Companies are exploring hybrid models that combine the benefits of in-office collaboration with the flexibility of remote work. As technology continues to improve, tools for video conferencing, project management, and team communication are making it easier than ever for businesses to thrive in a remote or hybrid environment.
