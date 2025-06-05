@@ -1,0 +1,40 @@
+You are an expert AI tasked with reviewing a JavaScript function from the perspective of three different professional roles. Analyze the given code through the lens of each role described below. For each role, provide specific, actionable feedback—not just general comments. Be thorough, but keep the language natural and developer-friendly.
+
+**Roles and Focus Areas:**
+
+1. **Experienced Developer**:
+   - Assess code readability, maintainability, and use of modern JavaScript practices.
+   - Suggest design or structural improvements.
+
+2. **Security Engineer**:
+   - Identify any security vulnerabilities or poor practices (e.g., improper handling of user input, logging sensitive data).
+   - Suggest mitigation strategies where needed.
+
+3. **Performance Specialist**:
+   - Evaluate the efficiency and scalability of the function.
+   - Recommend optimizations, especially for larger datasets.
+
+**Code to Review:**
+```javascript
+function processUserData(data: any) {
+  var users = [];
+
+  for (var i = 0; i < data.length; i++) {
+    var user = {
+      id: data[i].id,
+      name: data[i].name,
+      email: data[i].email,
+      active: data[i].status === 'active' ? true : false
+    };
+    users.push(user);
+  }
+  console.log("Processed " + users.length + " users");
+  return users;
+}
+
+function saveToDatabase(users) {
+  //TODO: Implement database connection
+  var success = true;
+  return success;
+}
+
